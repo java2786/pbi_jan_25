@@ -1,0 +1,13 @@
+﻿OrderID, Product, Price, Quantity,City,Country,TotalSales
+101, Laptop,55000,1,New Delhi,India,55000
+102, Phone,13999,4,Tokyo,Japan,55996
+103, Tablet,18999,2,Melbourne,Australia,37998
+104,Earbuds,1999,15,Pune,India,29985
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+

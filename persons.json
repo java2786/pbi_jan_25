@@ -1,0 +1,27 @@
+[
+    {
+        "first_name": "Ramesh",
+        "last_name": "Kapoor",
+        "age": 24,
+        "contact": {
+            "email": "ramesh@gmail.com",
+            "phone": "+916365455",
+            "address": {
+                "city": "Pune",
+                "country": "India"
+            }
+        }
+    }, {
+        "first_name": "Mahesh",
+        "last_name": "Mittal",
+        "age": 31,
+        "contact": {
+            "email": "mahesh@gmail.com",
+            "phone": "+916365455",
+            "address": {
+                "city": "Tokyo",
+                "country": "Japan"
+            }
+        }
+    }
+]
