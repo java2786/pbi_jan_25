@@ -1,0 +1,12 @@
+﻿OrderID, Product, Price, Quantity,City,Country
+101, Laptop,55000,1,New Delhi,India
+102, Phone,13999,4,Tokyo,Japan
+103, Tablet,18999,2,Melbourne,Australia
+104, Laptop,45000,1,New Delhi,India
+105, Phone,21999,2,Melbourne,Australia
+106, Tablet,12999,5,Tokyo,Japan
+107,Book,150,15,New York,USA
+108,Shirt,600,12,New Delhi,India
+109,Camera,32000,2,Tokyo,Japan
+110, Phone,13999,2,New Delhi,India
+111, Phone,13999,2,New Delhi,India
