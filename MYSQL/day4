@@ -1,0 +1,45 @@
+alter -> column add, modify, drop, rename
+-------------------
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+create table students(
+    name varchar(20),
+    email varchar(30),
+    age int
+);
+
+insert into students(name, age, email) value('ramesh', 21, 'ram@gmail.com');
+insert into students(name, age, email) value('ram kapoor', 23, 'ram@gmail.com');
+
+alter table students
+    modify column email varchar(30) unique;
+
++++++++++++++++++++
+
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+create table students(
+    name varchar(20),
+    email varchar(30) unique,
+    age int
+);
+
+insert into students(name, age, email) value('ramesh', 23, 'ram@gmail.com');
+insert into students(name, age, email) value('ram kapoor', 23, 'ram@gmail.com');
+
+
+select * from students;
+update students set email='ramesh@gmail.com' where name='ramesh';
+
+select * from students;
+
+
+alter table students modify column name varchar(20) unique;
+
+insert into students(name, age, email) value('ramesh', 21, 'rameshji@gmail.com');
+
+alter table students DROP INDEX name;

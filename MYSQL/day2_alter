@@ -1,0 +1,9 @@
+create table students(
+    name varchar(20),
+    email varchar(10),
+    age int
+);
+
+ALTER TABLE students MODIFY COLUMN email VARCHAR(50
+ALTER TABLE students ADD COLUMN phone_number VARCHAR(15
+ALTER TABLE students DROP COLUMN age;

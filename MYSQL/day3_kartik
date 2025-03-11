@@ -1,0 +1,88 @@
+Download mysql and install
+---------------------------------
+=> username, password
+====> root, root
+
+=> Open windows menu
+    -> services
+    mysql -> start/stop
+
+-------------------------
+
+c:/program files/mysql server8/bin => copy
+    commands
+    this pc -> right click -> properties -> advanced system settings -> Advanced -> Environment Variables -> Path -> select and edit -> new -> paste
+
+-------------------------
+
+Installation, Start
+	=> conntection using cmd
+		$ mysql -u root -proot
+		
+	=> Create Database
+		$ create database tutorials;
+	
+	=> Switch into database
+		$ use tutorials;
+		
+	=> check tables
+		$ show tables;
+		
+	=> Create table
+		row + column => field (cell) (data)
+		row => object => tuple
+		
+		create table students(
+			name varchar(20),
+			age int,
+			address varchar(100),
+			phone varchar(10)
+		);
+		
+	=> check tables
+		$ show tables;
+		
+	=> read all data from table
+		$ select * from students;
+		
+	=> show table structure
+		$ desc students;
+		
+	=> Insert data in table
+		$ insert into students values('ramesh', 24, 'pune', '8596859685');
+		
+	=> read all data from table
+		$ select * from students;
+		
+	=> Insert data in table
+		$ insert into students(name, age, address, phone) values('ramesh', 24, 'pune', '8596859685');
+		$ insert into students(name, address, phone, age) values('ramesh', 'punjab', '9596859685', 21);
+		$ insert into students(address, phone, age, name) values('punjab', '9596859685', 21, 'umesh');
+		
+	=> Insert multiple values
+		$ insert into students(name, age, address, phone) values
+		('ramesh', 24, 'pune', '8596859685'),
+		('mahesh', 21, 'bangalore', '8596859685'),
+		('suresh', 23, 'delhi', '8596859685'),
+		('dinesh', 20, 'ghaziabad', '8596859685');
+		
+		$ insert into students(name, age, address, phone) values
+		('ramesh', 24, 'pune', '8596859685'),
+		('dinesh', 20, 'ghaziabad', '8596859685'),
+		('mahesh', 21, 'bangalore', '8596859685');
+		
+		insert into students(age, address, phone, name) values
+		(23, 'delhi', '8596859685', 'suresh');
+		
+
+Alter => 
+desc emps;
+    name    varchar(20) NULL    ...
+		
+
+alter table tablename
+    add column type;
+
+
+alter table tablename
+    modify column type;
