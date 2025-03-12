@@ -1,0 +1,126 @@
+    student - ramesh, suresh, mahesh, lokesh
+    course - powerbi, mysql, java, python
+
+
+        ramesh - powerbi, java
+        mahesh - python, powerbi
+        suresh - python
+
+
+create table students(
+    name varchar(20),
+    course_1 varchar(50),
+    course_2 varchar(50),
+);
+create table trainers(
+    name varchar(20),
+    course_1 varchar(50),
+    course_2 varchar(50),
+);
+
+
+-----------------------------------------------------
+#students and courses table
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table students(
+    name varchar(20),
+    course varchar(50)
+);
+
+create table courses(
+    name varchar(50)
+);
+
+insert into courses(name) values('java'),('python'),('mysql');
+
+insert into students(name, course) values('ramesh', 'python'),('mahesh', 'java');
+
+update courses set name='java in 20 days' where name='java';
+
+----------------------------
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table courses(
+    id int unique,
+    name varchar(50)
+);
+
+insert into courses(name, id) values('java', 123),('python',124);
+insert into courses(name) values('mysql'),('powerbi');
+
+------------------
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table courses(
+    -- id int unique not null,
+    id int primary key,
+    name varchar(50)
+);
+
+insert into courses(name) values('mysql'),('powerbi');
+
+
+create table trainers();
+drop table students;
+create table students(
+    -- email varchar(20) primary key, # multiple primary key not supported
+    email varchar(20) unique not null, 
+    name varchar(20),
+    -- roll int unique not null
+    roll int primary key
+);
+desc students;
+
+
+----------------------------
+
+courses + students + trainers
+
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table courses(
+    id int primary key auto_increment,
+    -- name varchar(50) unique default 'demo'
+    name varchar(50) unique not null
+);
+
+select * from courses;
+
+insert into courses(name) values('java');
+insert into courses(name) values('python');
+insert into courses(name) values('mysql');
+insert into courses(name) values('powerbi');
+insert into courses(name) values('ai');
+
+
+insert into courses values();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
