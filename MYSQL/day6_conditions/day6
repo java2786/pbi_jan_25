@@ -1,0 +1,116 @@
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+
+
+create table students(
+    email varchar(20) unique not null, 
+    name varchar(20),
+    roll int primary key
+);
+desc students;
+
+
+----------------------------
+
+courses + students + trainers
+
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table courses(
+    id int primary key auto_increment,
+    name varchar(50) unique not null
+);
+
+select * from courses;
+
+insert into courses(name) values('java');
+insert into courses(name) values('python');
+insert into courses(name) values('mysql');
+insert into courses(name) values('powerbi');
+insert into courses(name) values('ai');
+
+
+insert into courses values();
+
+
+------------------------
+
+Mapping
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+
+
+create table students(
+    roll int primary key auto_increment,
+    email varchar(20) unique not null, 
+    name varchar(20),
+    course int 
+);
+
+create table courses(
+    id int primary key auto_increment,
+    name varchar(50) unique not null
+);
+
+insert into courses(name) values('java'),('python'),('mysql');
+
+insert into students(email, name, course) values('ramesh@gmail.com', 'ramesh', 1);
+insert into students(email, name, course) values('mahesh@gmail.com', 'mahesh', 1);
+
+insert into students(email, name, course) values('ganesh@gmail.com', 'ganesh', 50);
+
+### Find course name of ramesh 
+select name from courses; 
+
+select * from students where name = 'ramesh';
+select course from students where name = 'ramesh';
+
+select name from courses where id=1; 
+
+-- nested query
+select name from courses where id=(select course from students where name = 'ramesh'); 
+
+select name from courses where id=(select course from students where name = 'ganesh'); 
+
+
+++++++++++++++++++++++++++++++
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table courses(
+    id int primary key auto_increment,
+    name varchar(50) unique not null
+);
+
+create table students(
+    roll int primary key auto_increment,
+    email varchar(20) unique not null, 
+    name varchar(20),
+    course int, 
+    -- validate course id
+    FOREIGN KEY (course) REFERENCES courses (id)
+);
+
+
+insert into courses(name) values('java'),('python'),('mysql');
+
+insert into students(email, name, course) values('ramesh@gmail.com', 'ramesh', 1);
+insert into students(email, name, course) values('mahesh@gmail.com', 'mahesh', 1);
+
+insert into students(email, name, course) values('ganesh@gmail.com', 'ganesh', 50);
+
+
+
+
+
+
+

@@ -1,0 +1,178 @@
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+
+create table students(
+    roll int primary key auto_increment,
+    email varchar(20) unique not null, 
+    name varchar(20),
+    age int
+);
+
+insert into students(email, name, age) values
+('ramesh@gmail.com', 'ramesh', 24),
+('mahesh@gmail.com', 'mahesh', 20),
+('suresh@gmail.com', 'suresh', 33),
+('mukesh@gmail.com', 'mukesh', 19),
+('ganesh@gmail.com', 'ganesh', 27),
+('dinesh@gmail.com', 'dinesh', 18),
+('lokesh@gmail.com', 'lokesh', 30),
+('kamlesh@gmail.com', 'kamlesh', 23),
+('umesh@gmail.com', 'umesh', 35);
+
+select * from students where age > 20 and age < 30;
+
+select * from students where age <= 20 or age >= 30;
+
+
+
+---------------------
+
+## Condition
+select * from students
+where
+    age > 15;
+
+select * from students
+where
+    age < 20 and id > 52;
+
+select * from students
+where
+    age > 20 and id < 52;
+
+select * from students
+where
+    age > 20 or age < 30;
+
+
+select * from students
+where
+    age = 15;
+
+
+
+select * from students
+where
+    age <> 15;
+
+
+
+select * from students where name like 'm%';
+select * from students where name like '%m';
+
+
+select * from students
+where
+    age > 20 and age < 30;
+
+select * from students
+where
+    age in(20,30);
+
+select * from students
+where
+    age in(20,21, 23,30);
+
+
+select * from students
+where
+    age not between 20 and 25;
+
+
+select * from students
+where
+    age is NULL;
+
+
+## Bitwise operators
+select * from students where age >15 && age < 23;
+select * from students where age >15 and age < 23;
+select * from students where age >15 & age < 23;
+
+NAND
+AND
+OR
+XOR
+
+GATE
+AND
+A   B   Output
+---------------
+1   1   1
+1   0   0
+0   1   0
+0   0   0
+
+select 3&2;
+
+11 - 3
+10 - 2
+----
+10 - 2
+
+
+
+101 - 5
+010 - 2
+------
+000 - 0
+
+
+1010 - 10
+0111 - 7
+---------------
+0010 - 2
+
+
+
+++++++++++++++++
+
+
+GATE
+OR
+A   B   Output
+---------------
+1   1   1
+1   0   1
+0   1   1
+0   0   0
+
+select 3|2;
+
+11 - 3
+10 - 2
+----
+11 - 3
+
+
+
+101 - 5
+010 - 2
+------
+111 - 7
+
+
+1010 - 10
+0111 - 7
+---------------
+1111 - 15
+
+### Shift
+select 10 << 1; -- left
+
+1010 - 10
+0101 - 5
+
+select 10 >> 2; -- 5 right
+
+111 - 7
+101 - 7
+
+select 7 >> 1;
+
+
+
+
+
