@@ -1,0 +1,15 @@
+3 type
+
+student
+    ramesh
+    mahesh
+
+course
+    math
+    hindi
+    english
+
+
+
+ramesh - hindi 
+mahesh - math

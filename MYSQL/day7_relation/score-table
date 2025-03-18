@@ -1,0 +1,57 @@
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table students(
+    roll int primary key auto_increment,
+    email varchar(20) unique not null, 
+    name varchar(20)
+);
+
+create table courses(
+    id int primary key auto_increment,
+    name varchar(50) unique not null
+);
+
+create table scores(
+    -- id int primary key auto_increment,
+    std_id int,
+    course_id int,
+    marks decimal(10,2),
+    FOREIGN key (std_id) REFERENCES students(roll),
+    FOREIGN key (course_id) REFERENCES courses(id),
+    primary key (std_id, course_id)
+);
+
+select * from students;
+select * from courses;
+select * from scores;
+
+-- insert into scores(std_id, course_id, marks) values(2, 5, 65.30);
+
+insert into students(email, name) values('ramesh@gmail.com', 'ramesh');
+insert into students(email, name) values('mahesh@gmail.com', 'mahesh');
+insert into students(email, name) values('dinesh@gmail.com', 'dinesh');
+
+insert into courses(name) values('math');
+insert into courses(name) values('hindi');
+insert into courses(name) values('sanskrit');
+insert into courses(name) values('english');
+
+-- insert into scores(std_id, course_id, marks) values(2, 5, 65.30);
+
+insert into scores(std_id, course_id, marks) values(1, 1, 65.30);
+insert into scores(std_id, course_id, marks) values(1, 2, 93);
+insert into scores(std_id, course_id, marks) values(1, 3, 79.98);
+insert into scores(std_id, course_id, marks) values(1, 4, 81.50);
+
+insert into scores(std_id, course_id, marks) values(2, 1, 75.30);
+insert into scores(std_id, course_id, marks) values(2, 2, 89.3);
+insert into scores(std_id, course_id, marks) values(2, 3, 68.78);
+
+
+
+-- insert into scores(std_id, course_id, marks) values(1, 4, 96);
+-- update scores set column=value,column=value where column = value and column = value 
+
+update scores set marks=96 where std_id = 1 and course_id = 4;
