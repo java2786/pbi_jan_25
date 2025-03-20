@@ -1,0 +1,49 @@
+3 type
+
+student
+    ramesh
+    mahesh
+
+course
+    math
+    hindi
+    english
+
+
+
+ramesh - hindi 
+mahesh - math
+
++++++++++++++++++++++
+
+drop database if exists tutorial;
+create database tutorial;
+use tutorial;
+
+create table courses(
+    id int primary key auto_increment,
+    title varchar(50) unique not null
+);
+
+create table students(
+    roll int primary key auto_increment,
+    name varchar(20),
+    course_id int,
+    foreign key(course_id) references courses(id)
+);
+insert into courses(title) values('java');
+insert into courses(title) values('mysql');
+insert into courses(title) values('powerbi');
+insert into courses(title) values('nodejs');
+
+insert into students(name, course_id) values('ramesh', 1);
+insert into students(name, course_id) values('mahesh', 2);
+insert into students(name, course_id) values('suresh', 3);
+insert into students(name, course_id) values('kamlesh', 1);
+insert into students(name, course_id) values('dinesh', 2);
+
+
+-- Find all students enrolled in java course
+select * from students where course_id = (select id from courses where title = 'java');
+-- Find all students enrolled in mysql course
+select * from students where course_id = (select id from courses where title = 'mysql');

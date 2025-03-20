@@ -1,0 +1,147 @@
+Data, database, RDBMS
+Installation - ip/host, port, user, pass
+
+connection 
+    - mysql -u -p
+
+database create
+- table create
+    - insert data
+    - select data
+    - delete, update
+
+Data - CRUD
+
+-------------------
+Practice
+
+students - mahesh ramesh suresh mukesh
+subjects - eng  java    it  python arts
+
+score
+    mahesh  arts -> 50
+    mahesh  java -> 42
+    ramesh  python -> 96
+    ramesh  java -> 78
+
+    anjali  math -> 85
+    6       10
+
+INSERT INTO scores (student_id, subject_id, marks)
+VALUES (6, 10, 99);
+INSERT INTO scores (student_id, subject_id, marks)
+VALUES (5, 1, 99);
+
+Find students who are in grade 'A'.
+- Find students born after the year 2008.
+
+select * from students where dob > '2015-12-15';
+select * from students where dob > '2008-12-31';
+
+Find the total marks scored by each student
+- select sum(marks) as total_marks from scores where student_id=1;
+- select sum(marks) as total_marks from scores where student_id=2;
+
+select student_id, sum(marks) as total_marks from scores group by student_id;
+
+select student_id, avg(marks) as avg_marks from scores group by student_id;
+
+select student_id, sum(marks) as total_marks, avg(marks) as avg_marks from scores group by student_id;
+
+
+- Find the average marks scored in Science (subject_id = 2).
+select avg(marks) as science_avg_marks from scores where subject_id = 2;
+
+
+- Find the average marks scored in Science.
+select avg(marks) as science_avg_marks from scores where subject_id = (select id from subjects where subject_name = 'Science');
+
+- Get the highest marks scored in Mathematics (subject_id = 1).
+select max(marks) as highest_math_marks from scores where subject_id=1;
+
+select max(marks) as highest_math_marks from scores where subject_id=(select id from subjects where subject_name = 'Mathematics');
+
+select * from scores order by marks desc limit 1;
+
+select name from students where id = (select student_id from scores order by marks desc limit 1);
+
+select student_id from scores order by marks desc limit 1;
+
+
+
++++ 20 dec ++++
+
+Find top 3 highest scores.
+
+select marks from scores order by marks desc;
+select distinct(marks) from scores order by marks desc;
+
+select marks from scores order by marks desc limit 3;
+select distinct(marks) from scores order by marks desc limit 3;
+
+
+++++++++++++++
+
+Find the total number of students who scored more than 80 marks in any subject.
+
+select * from scores where marks > 80;
+select count(*) from scores where marks > 80;
+
+select student_id from scores where marks > 80;
+select distinct(student_id) from scores where marks > 80;
+select count(distinct(student_id)) from scores where marks > 80;
+
+select count(distinct(student_id)) as toppers from scores where marks > 80;
+
++++++++++++++++++
+
+Find the names of students who scored above 90 in English (subject_id = 3)
+
+select name from students where id in (3, 4, 2);
+
+select * from students where id in (select student_id from scores where marks > 90 and subject_id = 3);
+
+select student_id from scores where marks > 90 and subject_id = 3;
+
+
+
+Find the names of students who scored above 70 in English
+
+
+select * from students where id in (select student_id from scores where marks > 70 and subject_id = (select id from subjects where subject_name='english'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
