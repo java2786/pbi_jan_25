@@ -6,9 +6,9 @@
 
 ## Create database
 ```sql 
-drop database if exists tutorial_1;
-create database if not exists tutorial_1;
-use tutorial_1;
+drop database if exists tutorial;
+create database if not exists tutorial;
+use tutorial;
 ```
 
 ## Tables and Sample Data
@@ -69,79 +69,33 @@ VALUES
 ## Practice Problems
 ### Level 1: Basic Queries
 - Retrieve all student details.  
-SELECT * FROM students;
 
 - Find students who are in grade 'A'.
-SELECT * FROM students WHERE grade = 'A';
 
 - Get the details of students older than 14 years.
-SELECT * FROM students WHERE age > 14;
 
 - Find students born after the year 2008.
-SELECT * FROM students WHERE dob > '2008-01-01';
 
 ### Level 2: Aggregation Queries (No Joins)
 - Find the total marks scored by each student.
-SELECT student_id, SUM(marks) AS total_marks
-FROM scores
-GROUP BY student_id;
 
 - Find the average marks scored in Science (subject_id = 2).
-SELECT AVG(marks) AS avg_marks
-FROM scores
-WHERE subject_id = 2;
 
-select avg(marks) as science_avg_marks from scores where subject_id = (select id from subjects where subject_name = 'Science');
 
 - Get the highest marks scored in Mathematics (subject_id = 1).
-SELECT MAX(marks) AS highest_marks
-FROM scores
-WHERE subject_id = 1;
+
 ++++
 - Find the total number of students who scored more than 80 marks in any subject.
-SELECT COUNT(DISTINCT student_id) AS num_students
-FROM scores
-WHERE marks > 80;
+
 
 ### Level 3: Nested Queries
 Find the names of students who scored above 90 in English (subject_id = 3).
-SELECT name 
-FROM students
-WHERE id IN (
-    SELECT student_id 
-    FROM scores
-    WHERE subject_id = 3 AND marks > 90
-);
+
 
 - List the names of students who have total marks greater than the average total marks of all students.
-SELECT name 
-FROM students
-WHERE id IN (
-    SELECT student_id 
-    FROM scores
-    GROUP BY student_id
-    HAVING SUM(marks) > (SELECT AVG(total_marks) FROM (
-        SELECT SUM(marks) AS total_marks FROM scores GROUP BY student_id
-    ) AS avg_table)
-);
+
 
 - Get the details of students whose lowest score in any subject is less than 60.
-SELECT * 
-FROM students
-WHERE id IN (
-    SELECT student_id 
-    FROM scores
-    GROUP BY student_id
-    HAVING MIN(marks) < 60
-);
+
 
 - Find the subject with the highest average marks.
-SELECT subject_name 
-FROM subjects
-WHERE id = (
-    SELECT subject_id 
-    FROM scores
-    GROUP BY subject_id
-    ORDER BY AVG(marks) DESC
-    LIMIT 1
-);
