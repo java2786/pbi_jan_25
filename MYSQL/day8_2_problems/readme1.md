@@ -77,20 +77,45 @@ INSERT INTO scores (student_id, subject_id, marks) VALUES (5, 1, 99);
 ## Practice Problems
 ### Level 1: Basic Queries
 - Retrieve all student details.  
+```sql
 SELECT * FROM students;
+```
 
 - Find students who are in grade 'A'.
+```sql
+SELECT * FROM students WHERE grade = 'A';
+```
 
 - Get the details of students older than 14 years.
+```sql
+SELECT * FROM students WHERE age > 14;
+```
 
 - Find students born after the year 2008.
+```sql
+SELECT * FROM students WHERE dob > '2008-01-01';
+```
 
 ### Level 2: Aggregation Queries (No Joins)
 - Find the total marks scored by each student.
+```sql
+SELECT student_id, SUM(marks) AS total_marks
+FROM scores
+GROUP BY student_id;
+```
 
 - Find the average marks scored in Science (subject_id = 2).
+```sql
+SELECT AVG(marks) AS avg_marks
+FROM scores
+WHERE subject_id = 2;
 
+select avg(marks) as science_avg_marks from scores where subject_id = (select id from subjects where subject_name = 'Science');
+```
 
 - Get the highest marks scored in Mathematics (subject_id = 1).
 ```sql
+SELECT MAX(marks) AS highest_marks
+FROM scores
+WHERE subject_id = 1;
 ```
