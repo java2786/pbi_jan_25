@@ -32,6 +32,9 @@ select * from scores;
 insert into students(email, name) values('ramesh@gmail.com', 'ramesh');
 insert into students(email, name) values('mahesh@gmail.com', 'mahesh');
 insert into students(email, name) values('dinesh@gmail.com', 'dinesh');
+insert into students(email, name) values('mukesh@gmail.com', 'mukesh');
+insert into students(email, name) values('umesh@gmail.com', 'umesh');
+insert into students(email, name) values('umesh@yahoo.com', 'umesh');
 
 insert into courses(name) values('math');
 insert into courses(name) values('hindi');
@@ -48,6 +51,21 @@ insert into scores(std_id, course_id, marks) values(1, 4, 81.50);
 insert into scores(std_id, course_id, marks) values(2, 1, 75.30);
 insert into scores(std_id, course_id, marks) values(2, 2, 89.3);
 insert into scores(std_id, course_id, marks) values(2, 3, 68.78);
+
+insert into scores(std_id, course_id, marks) values(3, 1, 95.30);
+insert into scores(std_id, course_id, marks) values(3, 2, 99.3);
+insert into scores(std_id, course_id, marks) values(3, 3, 98.78);
+insert into scores(std_id, course_id, marks) values(3, 4, 88.78);
+
+insert into scores(std_id, course_id, marks) values(4, 1, 92.30);
+insert into scores(std_id, course_id, marks) values(4, 2, 93.3);
+insert into scores(std_id, course_id, marks) values(4, 3, 94.78);
+insert into scores(std_id, course_id, marks) values(4, 4, 98.78);
+
+insert into scores(std_id, course_id, marks) values(5, 1, 91.30);
+insert into scores(std_id, course_id, marks) values(5, 2, 92.3);
+insert into scores(std_id, course_id, marks) values(5, 3, 94.78);
+insert into scores(std_id, course_id, marks) values(5, 4, 91.78);
 
 
 
