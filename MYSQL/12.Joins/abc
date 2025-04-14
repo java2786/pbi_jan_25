@@ -1,0 +1,47 @@
+
+
+select a.name from authors a;
+
+select b.name from books b;
+
+++++
+
+select a.name, b.title, b.publish_year from authors a
+join books b;
+
+
+select a.name, b.title, b.publish_year from authors a
+join books b
+on b.author_id = a.id
+
+where publish_year>2005
+;
+
+conditions:
+    simple query - where
+    group by - having
+    join - on 
+
+
+Show Books Adapted Within 4 Years and Rated Lower Than the Adaptation
+
+2013-2010 = 
+
+
+select b.title, a.release_year, b.publish_year from books b
+join adaptations a
+on
+b.id = a.book_id
+where 
+release_year - publish_year < 40
+and
+b.rating < a.rating;
+
+
++++++++++++
+
+
+select b.title, a.release_year, b.publish_year from books b
+join adaptations a
+on
+b.id = a.book_id;

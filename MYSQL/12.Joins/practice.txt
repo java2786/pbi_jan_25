@@ -1,0 +1,136 @@
+- Show the name of each author together with the title of the book they wrote
+
+select b.id as book_id, b.title, a.name, a.id as author_id from 
+books b join authors a
+where b.author_id = a.id;
+
+
+select b.id as book_id, b.title, a.name, a.id as author_id from 
+books b join authors a
+on b.author_id = a.id;
+
+
+- Show the name of each author together with the title of the book they wrote and the year in which that book was published.
+
+
+select b.title, a.name, ad.release_year from books b join authors a
+on b.author_id = a.id
+join adaptations ad
+on b.id = ad.book_id;
+
+
+- Show the name of each author together with the title of the book they wrote and the year in which that book was published. Show only books published after 2005.
+
+select b.title, a.name, ad.release_year from books b join authors a
+on b.author_id = a.id
+join adaptations ad
+on b.id = ad.book_id
+where ad.release_year > 2005
+;
+
+
+- Show Books Adapted Within 4 Years and Rated Lower Than the Adaptation
+
+select b.title, b.publish_year as published, ad.release_year as adapted from books b 
+join adaptations ad
+on b.id = ad.book_id
+where b.publish_year + 4 >= ad.release_year
+;
+
+update books set publish_year = 2021 where title = 'The Great Gatsby';
+
+select b.title, b.publish_year as published, ad.release_year as adapted from books b 
+join adaptations ad
+on b.id = ad.book_id;
+
+
+SELECT
+  book.title AS book_title,
+  adaptation.title AS adaptation_title,
+  book.publish_year,
+  adaptation.release_year
+FROM book
+JOIN adaptation
+  ON book.id = adaptation.book_id
+WHERE adaptation.release_year - book.publish_year <= 4
+  AND book.rating < adaptation.rating;
+
+
+
+
+--- left join 
+- Show the title of each book together with the title of its adaptation and the date of the release. Show all books, regardless of whether they had adaptations.
+
+select b.title as book_title, ad.title as adaptation_title, ad.release_year 
+from books b 
+left join adaptations ad 
+on b.id = ad.book_id;
+
+
+- Show all books with their movie adaptations. Select each book's title, the name of its publishing house, the title of its adaptation, and the type of the adaptation. Keep the books with no adaptations in the result.
+
+
+select b.title as book_title, b.publishing_house, ad.title as adaptation_title, ad.release_year, ad.type 
+from books b 
+left join adaptations ad 
+on b.id = ad.book_id
+where ad.type = 'movie' or ad.type is NULL
+;
+
+
+
+RIGHT JOIN
+
+- Show the title of the book, the corresponding review, and the name of the review's author. Consider all books, even those that weren't reviewed.
+
+-- left join 
+select b.title, br.review, a.name from books b 
+left join book_reviews br 
+on b.id = br.book_id
+join authors a 
+on br.author_id = a.id;
+
+
+-- right join 
+select b.title, br.review, a.name 
+from book_reviews br right join books b 
+on b.id = br.book_id
+join authors a 
+on br.author_id = a.id;
+
+
+-- Full JOIN
+
+- Display the title of each book along with the name of its author. Show all books, even those without an author. Show all authors, even those who haven't published a book yet.
+
+select b.title, a.name from books b 
+full inner join authors a 
+on b.author_id = a.id;
+
+
+
+SELECT
+  b.title,
+  a.name
+FROM books b
+LEFT JOIN authors a
+  ON b.author_id = a.id
+
+union
+
+SELECT
+  b.title,
+  a.name
+FROM books b
+RIGHT JOIN authors a
+  ON b.author_id = a.id;
+
+
+
+++++++++++++++
+
+More problems on JOINs, group by, order by
+windows functions
+
+
+https://www.hackerrank.com/challenges/full-score/problem?isFullScreen=true
