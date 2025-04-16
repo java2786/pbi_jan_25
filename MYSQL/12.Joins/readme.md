@@ -169,7 +169,7 @@ WHERE adaptation.release_year - book.publish_year <= 4
 It is a type of outer join that returns all the columns from the left (the first) table and only the matching rows from the right (the second) table. If there is non-matching data, it’s shown as NULL.
 
 ### Problems
-- Show the title of each book together with the title of its adaptation and the date of the release. Show all books, regardless of whether they had adaptations.
+- Show the title of each book together with the title of its adaptation and the year of the adaptation release. Show all books, regardless of whether they had adaptations.
 - Show all books with their movie adaptations. Select each book's title, the name of its publishing house, the title of its adaptation, and the type of the adaptation. Keep the books with no adaptations in the result.
 
 
@@ -210,10 +210,12 @@ It is a type of join that returns all the columns from the right (the second) ta
 SELECT
   book.title,
   book_review.review,
-  book_review.author
-FROM book_review
-RIGHT JOIN book
-  ON book.id = book_review.book_id;
+  author.name
+FROM book_reviews as book_review
+RIGHT JOIN books as book
+  ON book.id = book_review.book_id
+RIGHT JOIN authors as author
+  ON author.id=book.author_id;
 ```
 
 
@@ -227,10 +229,21 @@ This is a LEFT JOIN and RIGHT JOIN put together. It shows matching rows from bot
 ### Solutions
 ```sql
 SELECT
-  title,
-  name
-FROM book
-FULL JOIN author
-  ON book.author_id = author.id;
+  b.title,
+  a.name
+FROM books b
+LEFT JOIN authors a
+  ON b.author_id = a.id
+
+UNION
+
+SELECT
+  b.title,
+  a.name
+FROM books b
+RIGHT JOIN authors a
+  ON b.author_id = a.id;
+
+
 ```
 
