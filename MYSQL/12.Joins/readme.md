@@ -242,7 +242,7 @@ SELECT
   a.name
 FROM books b
 RIGHT JOIN authors a
-  ON b.author_id = a.id;
+  ON b.author_id = a.id and b.author_id is NULL;
 
 
 ```
